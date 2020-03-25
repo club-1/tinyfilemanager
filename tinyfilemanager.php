@@ -22,7 +22,7 @@ define('AUTH_PAM', 2);
 // --- EDIT BELOW CONFIGURATION CAREFULLY ---
 
 // CLUB1 specific conf
-$env_user = get_current_user();
+$env_user = $_SERVER['USER'];
 $_SERVER['PHP_SELF'] = $_SERVER['REQUEST_URI'];
 
 
