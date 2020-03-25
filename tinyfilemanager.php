@@ -21,31 +21,35 @@ define('AUTH_PAM', 2);
 
 // --- EDIT BELOW CONFIGURATION CAREFULLY ---
 
+// CLUB1 specific conf
+$env_user = get_current_user();
+$_SERVER['PHP_SELF'] = $_SERVER['REQUEST_URI'];
+
 
 // Auth with login/password 
 // AUTH_NONE: disable authentication
 // AUTH_PHP: authenticate against $auth_users array
 // AUTH_PAM: authenticate against PAM
 // Is independent from IP white- and blacklisting
-$use_auth = AUTH_PHP;
+$use_auth = AUTH_PAM;
 
 // Login user name and password
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
-    'admin' => '$2y$10$/K.hjNr84lLNDt8fTXjoI.DBp6PpeyoJ.mGwrrLuCZfAwfSAGqhOW', //admin@123
-    'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
+    $env_user => ''
 );
 
 // Readonly users 
 // e.g. array('users', 'guest', ...)
 $readonly_users = array(
-    'user'
 );
 
 // user specific directories
 // array('Username' => 'Directory path', 'Username2' => 'Directory path', ...)
-$directories_users = array();
+$directories_users = array(
+    $env_user => "/home/$env_user"
+);
 
 // Enable highlight.js (https://highlightjs.org/) on view's page
 $use_highlightjs = true;
